@@ -53,6 +53,111 @@
             text-align: center;
         }
 
+        /* Testimonials Styles */
+        .testimonials {
+            background-color: #f8f9fa;
+        }
+        
+        .rating-stats {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .rating-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .stars {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        
+        .total-reviews {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(44, 90, 160, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-rating {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+        
+        .author-location {
+            color: var(--gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .author-location i {
+            font-size: 0.8rem;
+        }
+
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -590,10 +695,14 @@
                 font-size: 1rem;
                 padding: 8px 15px;
             }
+            
+            .rating-number {
+                font-size: 2.8rem;
+            }
         }
         
         @media (max-width: 576px) {
-            .service-card, .quality-card, .contact-info, .contact-form {
+            .service-card, .quality-card, .contact-info, .contact-form, .testimonial-card {
                 padding: 1.5rem;
             }
             
@@ -606,6 +715,10 @@
                 width: 100%;
                 max-width: 300px;
             }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -617,6 +730,7 @@
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
+                <a href="#testimonials">Reviews</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -718,6 +832,169 @@
                     <h3>Children & Teens</h3>
                     <p>Engaging, age-appropriate lessons for young learners, including those with learning differences like ADHD.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Student Reviews & Testimonials</h2>
+            
+            <div class="rating-stats">
+                <div class="rating-number">4.9<span style="font-size: 1.5rem; color: var(--gray);">/5</span></div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="total-reviews">Based on 352 reviews from students worldwide</div>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        I was struggling with IELTS preparation for months until I found this teacher. His clear explanations and structured approach helped me improve from 6.5 to 8.0 in just 2 months. The online sessions were perfectly timed and his feedback was always detailed and constructive. He understands exactly what examiners look for.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #4a7dc9;">A</div>
+                        <div class="author-info">
+                            <h4>Anastasia Petrova</h4>
+                            <div class="author-location">
+                                <i class="fas fa-map-marker-alt"></i> Moscow, Russia | IELTS Student
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        As a business professional in Toronto, I needed to improve my presentation skills. The teacher came to my office twice a week and transformed how I communicate. His Canadian business experience is invaluable. He doesn't just teach English - he teaches how to think and present like a native speaker in professional settings.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #e63946;">M</div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <div class="author-location">
+                                <i class="fas fa-map-marker-alt"></i> Toronto, Canada | Business Professional
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        My 10-year-old son with ADHD was falling behind in school. This teacher worked miracles with patience I've never seen before. He used games, sports analogies (especially soccer), and creative methods that kept my son engaged. After 3 months, his grades improved from C to A. We had sessions both online and at our home.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #2c5aa0;">S</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <div class="author-location">
+                                <i class="fas fa-map-marker-alt"></i> Vancouver, Canada | Parent
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        I moved to Canada from Brazil and needed to improve my accent and understanding of Canadian culture. The teacher helped me not just with language, but with cultural nuances, workplace etiquette, and even helped prepare me for job interviews. His clear speech and patience made complex topics easy to understand.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #25D366;">C</div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <div class="author-location">
+                                <i class="fas fa-map-marker-alt"></i> São Paulo, Brazil | Immigrant
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        Our company hired him for group business English classes in our Moscow office. He traveled to Russia multiple times and also conducted online sessions. His understanding of both Canadian and Russian business cultures made him exceptionally effective. Employees' confidence in international meetings improved dramatically.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #6c757d;">D</div>
+                        <div class="author-info">
+                            <h4>Dmitri Ivanov</h4>
+                            <div class="author-location">
+                                <i class="fas fa-map-marker-alt"></i> Moscow, Russia | HR Manager
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-text">
+                        I've taken online classes from Japan for 18 months now. The time zone difference was never an issue because of his flexible scheduling. His explanations are crystal clear and he always provides written notes after each lesson. My TOEFL score improved by 25 points, which helped me get into my dream university in Canada.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #FFD700;">Y</div>
+                        <div class="author-info">
+                            <h4>Yuki Tanaka</h4>
+                            <div class="author-location">
+                                <i class="fas fa-map-marker-alt"></i> Tokyo, Japan | University Student
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="btn">Join 352 Happy Students</a>
             </div>
         </div>
     </section>
@@ -916,7 +1193,7 @@
         </div>
     </section>
 
-    <!-- Footer - CLEANED UP (No WhatsApp repetition) -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="logo" style="color: white; margin-bottom: 1rem;">Canadian English Teacher</div>
@@ -925,6 +1202,7 @@
             <div class="footer-links">
                 <a href="#about">About Me</a>
                 <a href="#services">Services</a>
+                <a href="#testimonials">Reviews</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#contact">Contact</a>
             </div>
