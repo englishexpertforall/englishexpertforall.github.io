@@ -503,6 +503,25 @@
             padding-top: 2rem;
         }
         
+        /* Success Message */
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            display: none;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero, .about-content, .contact-container {
@@ -785,6 +804,16 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp / Phone</h4>
+                            <p>+7 977 441 6049</p>
+                            <p>Available for quick inquiries</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
                         <div>
@@ -793,46 +822,54 @@
                             <p>Weekdays & Weekends</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-language"></i>
-                        </div>
-                        <div>
-                            <h4>Languages</h4>
-                            <p>English (Native)</p>
-                            <p>Understands multiple accents</p>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="contact-form">
                     <h3>Send Me a Message</h3>
-                    <form id="contactForm">
+                    <!-- Formspree Form - Will send to your email -->
+                    <form action="https://formspree.io/f/xzzblbkk" method="POST" id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone (Optional)</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number">
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <select id="subject" class="form-control" required>
+                            <select id="subject" name="subject" class="form-control" required>
                                 <option value="" disabled selected>Select your interest</option>
-                                <option value="free-demo">Free 15-minute Demo Lesson</option>
-                                <option value="general-english">General English Lessons</option>
-                                <option value="business-english">Business English</option>
-                                <option value="exam-prep">Exam Preparation</option>
-                                <option value="children">Lessons for Children</option>
-                                <option value="other">Other Inquiry</option>
+                                <option value="Free 15-minute Demo Lesson">Free 15-minute Demo Lesson</option>
+                                <option value="General English Lessons">General English Lessons</option>
+                                <option value="Business English">Business English</option>
+                                <option value="Exam Preparation (IELTS/TOEFL/CELPIP)">Exam Preparation (IELTS/TOEFL/CELPIP)</option>
+                                <option value="Lessons for Children">Lessons for Children</option>
+                                <option value="Other Inquiry">Other Inquiry</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" class="form-control" placeholder="Tell me about your English learning goals..." required></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell me about your English learning goals..." required></textarea>
                         </div>
+                        
+                        <!-- Hidden field to set reply-to -->
+                        <input type="hidden" name="_replyto" value="mikekempf6996@gmail.com">
+                        <input type="hidden" name="_subject" value="New Message from English Expert Website">
+                        
                         <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        
+                        <!-- Success/Error Messages -->
+                        <div id="success-message" class="success-message">
+                            Thank you! Your message has been sent. I will contact you within 24 hours.
+                        </div>
+                        <div id="error-message" class="error-message">
+                            Sorry, there was an error sending your message. Please try again or contact me via WhatsApp.
+                        </div>
                     </form>
                 </div>
             </div>
@@ -853,16 +890,16 @@
             </div>
             
             <div class="social-icons">
-                <a href="#" class="social-icon">
+                <a href="https://wa.me/79774416049" target="_blank" class="social-icon" title="WhatsApp">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="#" class="social-icon">
+                <a href="skype:live:.cid.1234567890?chat" class="social-icon" title="Skype">
                     <i class="fab fa-skype"></i>
                 </a>
-                <a href="#" class="social-icon">
+                <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" class="social-icon">
+                <a href="#contact" class="social-icon" title="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
@@ -877,22 +914,53 @@
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Simple form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form submission with Formspree
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
             
-            // In a real website, you would send this data to a server
-            // For now, we'll just show an alert and reset the form
-            alert(`Thank you, ${name}! Your message has been sent. I will contact you at ${email} within 24 hours to schedule your free demo lesson.`);
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
             
-            // Reset form
-            document.getElementById('contactForm').reset();
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Show error message
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } finally {
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
         });
         
         // Smooth scrolling for navigation links
