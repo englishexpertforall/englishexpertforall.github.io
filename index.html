@@ -8,41 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* WhatsApp Number Highlight Styles - ADDED */
+        /* WhatsApp Highlight Style - Only in Contact */
         .whatsapp-highlight {
             background-color: #25D366;
             color: white !important;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 50px;
             display: inline-block;
-            margin: 5px 0;
+            margin: 10px 0;
             font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            text-align: center;
+            width: 100%;
         }
         
         .whatsapp-highlight i {
-            margin-right: 8px;
+            margin-right: 10px;
+            font-size: 1.3rem;
         }
         
         .whatsapp-highlight a {
             color: white !important;
             text-decoration: none;
-        }
-        
-        .phone-callout {
-            background-color: #f8f9fa;
-            border-left: 4px solid #25D366;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .phone-large {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #25D366;
             margin: 10px 0;
+            text-align: center;
         }
         
         .contact-urgency {
@@ -50,8 +50,8 @@
             font-weight: 600;
             font-size: 0.9rem;
             margin-top: 5px;
+            text-align: center;
         }
-        /* END WhatsApp Styles */
 
         /* Reset and Base Styles */
         * {
@@ -585,6 +585,11 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+            
+            .whatsapp-highlight {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -600,10 +605,6 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
-            }
-            
-            .phone-large {
-                font-size: 1.2rem;
             }
         }
     </style>
@@ -628,13 +629,6 @@
                 <div class="hero-btns">
                     <a href="#contact" class="btn">Book a Free 15-min Demo</a>
                     <a href="#pricing" class="btn btn-secondary">View Pricing</a>
-                </div>
-                <!-- ADDED: WhatsApp number in hero section -->
-                <div style="margin-top: 1.5rem;">
-                    <div class="whatsapp-highlight">
-                        <i class="fab fa-whatsapp"></i>
-                        <a href="https://wa.me/79774416049" target="_blank">Quick Contact: +7 977 441 6049</a>
-                    </div>
                 </div>
             </div>
             <div class="hero-img">
@@ -840,21 +834,19 @@
                         </div>
                     </div>
                     
-                    <!-- UPDATED: WhatsApp section with better visibility -->
+                    <!-- PROMINENT WHATSAPP NUMBER -->
                     <div class="contact-item">
                         <div class="contact-icon" style="background-color: #25D366;">
                             <i class="fab fa-whatsapp"></i>
                         </div>
-                        <div>
+                        <div style="width: 100%;">
                             <h4>WhatsApp / Phone</h4>
-                            <div class="phone-callout">
-                                <div class="phone-large">
-                                    <i class="fab fa-whatsapp"></i> +7 977 441 6049
-                                </div>
-                                <p>Available for quick inquiries</p>
-                                <div class="contact-urgency">
-                                    <i class="fas fa-bolt"></i> Fastest way to reach me!
-                                </div>
+                            <div class="phone-large">
+                                <i class="fab fa-whatsapp"></i> +7 977 441 6049
+                            </div>
+                            <p style="text-align: center; margin: 5px 0;">Available for quick inquiries</p>
+                            <div class="contact-urgency">
+                                <i class="fas fa-bolt"></i> Fastest way to reach me!
                             </div>
                         </div>
                     </div>
@@ -870,17 +862,19 @@
                         </div>
                     </div>
                     
-                    <!-- ADDED: Direct WhatsApp button -->
-                    <div style="margin-top: 2rem; text-align: center;">
-                        <a href="https://wa.me/79774416049" target="_blank" class="btn" style="background-color: #25D366; width: 100%;">
-                            <i class="fab fa-whatsapp"></i> Message on WhatsApp Now
-                        </a>
+                    <!-- BIG WHATSAPP BUTTON -->
+                    <div style="margin-top: 2rem;">
+                        <div class="whatsapp-highlight">
+                            <a href="https://wa.me/79774416049" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                Message on WhatsApp Now
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
                     <h3>Send Me a Message</h3>
-                    <!-- FIXED: Simple mailto form that will open user's email client -->
                     <form id="contactForm" onsubmit="sendEmail(this); return false;">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
@@ -922,7 +916,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - CLEANED UP (No WhatsApp repetition) -->
     <footer>
         <div class="footer-content">
             <div class="logo" style="color: white; margin-bottom: 1rem;">Canadian English Teacher</div>
@@ -935,8 +929,8 @@
                 <a href="#contact">Contact</a>
             </div>
             
-            <!-- UPDATED: WhatsApp icon more prominent -->
             <div class="social-icons">
+                <!-- Only WhatsApp icon remains with green color -->
                 <a href="https://wa.me/79774416049" target="_blank" class="social-icon" title="WhatsApp" style="background-color: #25D366;">
                     <i class="fab fa-whatsapp"></i>
                 </a>
@@ -951,14 +945,6 @@
                 </a>
             </div>
             
-            <!-- ADDED: WhatsApp callout in footer -->
-            <div style="margin: 1.5rem 0;">
-                <div class="whatsapp-highlight">
-                    <i class="fab fa-whatsapp"></i>
-                    Contact via WhatsApp: +7 977 441 6049
-                </div>
-            </div>
-            
             <div class="copyright">
                 &copy; <span id="currentYear"></span> Canadian English Teacher. All rights reserved.
             </div>
@@ -969,7 +955,7 @@
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // FIXED: Simple email function using mailto:
+        // Simple email function using mailto:
         function sendEmail(form) {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
